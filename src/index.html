@@ -173,61 +173,104 @@
   <script>
     document.body.onload = addTable;
     function addTable() {
-      var row;
-      /* 5 RENGLONES, 3 COLUMNAS - ASÍ SE DECLARA EL ARREGLO.*/
-      var elements = [[]];
-      var tableContainer = document.createElement('div');
-      tableContainer.className = "table-wrapper";
+      // ARREGLO DE FILAS
+      var rowsArray = [5], rowColor;
+      /* 5 RENGLONES, 3 COLUMNAS - ASÍ SE DECLARA EL ARREGLO.
+          Se guarda el texto de todas las columnas.*/
+      var rowText = initialize2DArray(5, 3);
+      var date = new Date();
+      var month = date.getMonth(), day = date.getDay(), year = date.getFullYear();
+      // DIV CON TODO EL CONTENIDO.
+      allContent = document.getElementsByClassName("all-content-wrapper");
+
+      
 
       /* --------------------------------------------- PRIMERA FILA */
+      // PRIMERA FILA DE OTRO COLOR.
+      rowText[0][0] = "Name";
+      rowText[0][1] = "Balance";
+      rowText[0][2] = "Date";
+      rowColor = "#e8f8fc";
+      
+      // CREAR LA FILA CON LOS DATOS.
+      rowsArray[0] = createRow(0, rowText, rowColor);
+
+      /* --------------------------------------------- 2 FILA */
+      rowText[1][0] = "Juan Perez";
+      rowText[1][1] = "$10,000";
+      rowText[1][2] = month + "/" + day + "/" + year;
+      rowColor = "#ffffff";
+
+      // CREAR LA FILA CON LOS DATOS.
+      rowsArray[1] = createRow(1, rowText, rowColor);
+
+      /* --------------------------------------------- 3 FILA */
+      rowText[2][0] = "Juan Perez";
+      rowText[2][1] = "$10,000";
+      rowText[2][2] = month + "/" + day + "/" + year;
+      rowColor = "#f0ecec";
+
+      rowsArray[2] = createRow(2, rowText, rowColor);
+      /* --------------------------------------------- 4  FILA */
+      rowText[3][0] = "Juan Perez";
+      rowText[3][1] = "$10,000";
+      rowText[3][2] = month + "/" + day + "/" + year;
+      rowColor = "#ffffff";
+
+      rowsArray[3] = createRow(3, rowText, rowColor);
+      /* --------------------------------------------- 5 FILA */
+      rowText[4][0] = "Juan Perez";
+      rowText[4][1] = "$10,000";
+      rowText[4][2] = month + "/" + day + "/" + year;
+      rowColor = "#f0ecec";
+
+      rowsArray[4] = createRow(4, rowText, rowColor);
+
+      // AGREGAR LA TABLA YA JUNTA AL HTML.
+      allContent[0].appendChild(appendRowsToTable(rowsArray));
+
+    }
+
+    function createRow(currentRow, textArray, rowColor) {
+      var row, elements = new Array(3);
+
       row = document.createElement('div');
       row.className = "table--row";
       // PRIMERA FILA DE OTRO COLOR.
       // row.style.backgroundColor = "#e8ecfc";
-      row.style.backgroundColor = "#e8f8fc";
-      // ELEMENTOS DE LA PRIMERA FILA.
-      elements[0][0] = document.createElement('div');
-      elements[0][0].className = "table--row--element";
-      elements[0][0].innerHTML = "Name";
+      row.style.backgroundColor = rowColor;
 
-      elements[0][1] = document.createElement('div');
-      elements[0][1].className = "table--row--element";
-      elements[0][1].innerHTML = "Balance";
+      // CREAMOS CADA ELEMENTO CON SU TEXTO CORRESPONDIENTE.
+      for (i = 0; i < 3; i++) {
+        elements[i] = document.createElement('div');
+        elements[i].className = "table--row--element";
+        elements[i].innerHTML = textArray[currentRow][i];
+      }
 
-      elements[0][2] = document.createElement('div');
-      elements[0][2].className = "table--row--element";
-      elements[0][2].innerHTML = "Date";
-
-      row.appendChild(elements[0][0]);
-      row.appendChild(elements[0][1]);
-      row.appendChild(elements[0][2]);
-
-      tableContainer.appendChild(row);
-
-      allContent = document.getElementsByClassName("all-content-wrapper");
-      allContent[0].appendChild(tableContainer);
-
-      /* --------------------------------------------- 2 FILA */
-
-
-      /* --------------------------------------------- 2 FILA */
-
-
-      /* --------------------------------------------- 4  FILA */
-
-
-      /* --------------------------------------------- 5 FILA */
-
-
-
-
-    }
-
-    function createRow(currentRow, currentColumn, elementsArray) {
-      
-
+      row.appendChild(elements[0]);
+      row.appendChild(elements[1]);
+      row.appendChild(elements[2]);
 
       return row;
+    }
+
+    // AGREGAR TODAS LAS FILAS A LA TABLA Y LUEGO LA TABLA AL HTML.
+    function appendRowsToTable(rowsArray) {
+      var tableContainer = document.createElement('div');
+      tableContainer.className = "table-wrapper";
+
+      for (i = 0; i < rowsArray.length; i++)
+        tableContainer.appendChild(rowsArray[i]);
+
+      return tableContainer;
+    }
+
+    // INICIALIZAR EL ARREGLO BIDIMENSIONAL.
+    function initialize2DArray(rows, cols) {
+      bidimensionalArray = new Array(rows);
+      for (i = 0; i < rows; i++)
+        bidimensionalArray[i] = new Array(cols);
+      return bidimensionalArray;
     }
 
   </script>
