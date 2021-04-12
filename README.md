@@ -2,6 +2,9 @@
 
     Lunes, 12 ABRIL 2021 [04:36 AM]
 
+# FINISHING DATE
+
+    Thursday, April 12th, 2021 [12:45PM]
 
 # FILES "T2_1 - PANTALLA A MAQUETAR/"
 

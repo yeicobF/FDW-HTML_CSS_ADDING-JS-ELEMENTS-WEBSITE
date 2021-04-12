@@ -27,7 +27,7 @@
       margin-top: 6px;
       display: flex; 
       justify-content: center;
-      overflow: hidden;
+      /* overflow: hidden; */
       /* overflow: hidden; display: flex; justify-content: center; */
 
     }
@@ -65,6 +65,7 @@
 
     /* CARDS REDONDEADAS QUE DEBERÁN CAMBIAR CON EL HOVER. */
     .card {
+      background-color: white;
       /* Borde redondeado. */
       /* box-shadow: 0px 0px 0px 1px #e0e1eb; */
       border: 1px solid #e0e1eb;
@@ -78,7 +79,7 @@
       align-items: center;
       /* PONER UN DIV DESPUÉS DEL OTRO. */
       flex-flow: column;
-      font-weight: 700;
+      font-weight: 800;
 
     }
 
@@ -103,7 +104,7 @@
     .table-wrapper {
       width: 100%;
       font-size: 16px;
-      font-weight: 700;
+      font-weight: 800;
       /* padding-right: 50px; */
       display: flex;
       /* PONER UN DIV DESPUÉS DEL OTRO. */
@@ -130,6 +131,7 @@
       height: 43px;
     }
 
+    /* Para que se vea como en el PDF de referencia.*/
     @media screen and (max-width: 946px) {
       body {
         justify-content: unset;
@@ -168,21 +170,69 @@
         </div>
 
       </div>
-
     </div>
-
-<!-- ------------------------- PARTE 2: JAVASCRIPT ------------------------- -->
-  
-
-
-
   </div>
-
+  
+<!-- ------------------------- PARTE 2: JAVASCRIPT ------------------------- -->
 <!-- ----------------------- CÓDIGO PARA AGREGAR JS ------------------------ -->
 
   <script>
     // CUANDO SE TERMINE DE CARGAR EL BODY SE HARÁ ESTE PROCESO.
     document.body.onload = addAllJSElements;
+
+    function addAllJSElements() {
+        // Agregamos la tabla.
+        addTable();
+
+        // Hay que agregar el total del balance en la esquina inferior derecha.
+        addBalanceTotal();
+      }
+
+    // AGREGAR LA SUMA DEL BALANCE.
+    // Me gustaría hacer mejor este códgio.
+    function addBalanceTotal() {
+      // DIV CON TODO EL CONTENIDO.
+      var allContent = document.getElementsByClassName("all-content-wrapper");
+
+      var balanceTotal = new Array(2);
+      balanceTotal[0] = document.createElement('div');
+      balanceTotal[0].className = "table--row--element";
+      balanceTotal[0].innerHTML = "Total";
+      balanceTotal[0].style.padding = "0 42px 0 18px";
+      balanceTotal[0].style.width = "unset";
+
+      
+      balanceTotal[1] = document.createElement('div');
+      balanceTotal[1].className = "table--row--element";
+      
+      // toLocaleString() 
+      // Así el número se separa dependiendo de las oopciones del sistema del
+      // usuario que lo ve. Como separado por comas, por ejemplo.
+      // toLocaleString("en-US") <- Así se ponen comas en lugar de puntos.
+      // FUENTE: https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+      balanceTotal[1].innerHTML = "$" + getBalanceValues().toLocaleString("en-US");
+      balanceTotal[1].style.padding = "0 42px 0 18px";
+      balanceTotal[1].style.width = "unset";
+
+
+
+      // METER EN UN DIV ESOS ELEMENTOS PARA ACOMODARLOS.
+      var balanceWrapper = document.createElement('div');
+      // balanceWrapper.className = "table--row";
+      balanceWrapper.style.marginTop = "24px";
+      balanceWrapper.style.marginLeft = "auto";
+      balanceWrapper.style.fontWeight = "800";
+      balanceWrapper.style.width = "100%";
+      balanceWrapper.style.display = "flex";
+      balanceWrapper.style.placeContent = "flex-end";
+
+      // Agregamos el texto y el número al total.
+      balanceWrapper.appendChild(balanceTotal[0]);
+      balanceWrapper.appendChild(balanceTotal[1]);
+
+      // Agregar el wrapper al final de todo el contenido.
+      allContent[0].appendChild(balanceWrapper);
+    }
 
     // Obtener los valores de la tabla.
     function getBalanceValues() {
@@ -191,13 +241,15 @@
       // 2do VALOR = BALANCE, 4 VALORES POR TABLA.
       // var tableValues = document.getElementsByClassName("table--row--element");
 
-      // Obtenemos todas las filas de la tabla y accedemos al segundo elemento.
+      // Obtenemos todas las filas de la tabla para solo acceder al segundo elemento,
+      //  en donde se encuentran los balances.
       var tableValues = document.getElementsByClassName("table--row");
       
-      console.log(tableValues);
+      // console.log(tableValues);
 
       var balanceValues = new Array(tableValues.length -1);
       
+      // Acumulador de los valores del balance.
       var totalSum = 0;
       for (i = 1; i <= balanceValues.length; i++) {
         // balanceValues[i - 1] = tableValues[i].childNodes[1].innerHTML.replace(/$[0-9]*,[0-9]/, "");
@@ -205,17 +257,10 @@
         balanceValues[i - 1] = tableValues[i].childNodes[1].innerHTML.replace(/[$,]/g, "");
         // PASAR LA CADENA A ENTERO.
         totalSum += parseInt(balanceValues[i - 1]);
-        console.log("\n - VALUE TO INT = " + balanceValues[i - 1] + ", SUM = " + totalSum);
+        // console.log("\n - VALUE TO INT = " + balanceValues[i - 1] + ", SUM = " + totalSum);
       }
-      // RESTAR LOS VALORES DE LAS CATEGORÍAS DE LA TABLA.
-      // var balanceValues = new Array(tableValues.length / 4 - 4);
-    }
-
-    function addAllJSElements() {
-      addTable();
-
-      // Hay que agregar el total del balance en la esquina inferior derecha.
-      getBalanceValues();
+      
+      return totalSum;
     }
 
     function addTable() {
@@ -227,7 +272,7 @@
       var date = new Date();
       var month = date.getMonth(), day = date.getDay(), year = date.getFullYear();
       // DIV CON TODO EL CONTENIDO.
-      allContent = document.getElementsByClassName("all-content-wrapper");
+      var allContent = document.getElementsByClassName("all-content-wrapper");
 
       
 
@@ -256,8 +301,8 @@
       rowsArray[1] = createRow(1, rowText, rowColor);
 
       /* --------------------------------------------- 3 FILA */
-      rowText[2][0] = "Juan Perez";
-      rowText[2][1] = "$10,000";
+      rowText[2][0] = "Armando Juárez";
+      rowText[2][1] = "$19,320";
       rowText[2][2] = month + "/" + day + "/" + year;
       rowText[2][3] = "";
 
@@ -265,8 +310,8 @@
 
       rowsArray[2] = createRow(2, rowText, rowColor);
       /* --------------------------------------------- 4  FILA */
-      rowText[3][0] = "Juan Perez";
-      rowText[3][1] = "$10,000";
+      rowText[3][0] = "Francisco Octavio";
+      rowText[3][1] = "$3,420";
       rowText[3][2] = month + "/" + day + "/" + year;
       rowText[3][3] = "";
 
@@ -274,8 +319,8 @@
 
       rowsArray[3] = createRow(3, rowText, rowColor);
       /* --------------------------------------------- 5 FILA */
-      rowText[4][0] = "Juan Perez";
-      rowText[4][1] = "$10,000";
+      rowText[4][0] = "Carmela López";
+      rowText[4][1] = "$81,597";
       rowText[4][2] = month + "/" + day + "/" + year;
       rowText[4][3] = "";
 
@@ -288,6 +333,7 @@
 
     }
 
+    // Se crea una fila de la tabla con los elementos que recibe.
     function createRow(currentRow, textArray, rowColor) {
       var row, elements = new Array(3);
 
