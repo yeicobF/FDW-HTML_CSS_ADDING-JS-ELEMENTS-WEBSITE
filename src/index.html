@@ -40,13 +40,14 @@
       background-color: #f8fcfc;
       /* width: 936px; height: 665px; */
       min-width: 905px; min-height: 665px;
+      font-family: 'Nunito Sans';
+
     }
 
     /* CONTENEDOR DE LA PARTE SUPERIOR QUE VA MAQUETADA. */
     .top-layout-wrapper {
       /* padding: 22px; */
-      padding: 22px 24px 22px 21px;
-      font-family: 'Nunito Sans';
+      padding: 22px 24px 0 21px;
     }
 
     .top-layout-wrapper h1 {
@@ -56,7 +57,8 @@
 
     /* CONTENEDOR DE LAS CARTAS. */
     .card-container {
-      padding: 36px 0 22px 0;
+      padding-top: 36px;
+      margin-bottom: 58px;
       display: flex;
       justify-content: space-between;
     }
@@ -96,6 +98,28 @@
       border-color: #8494fc;
     }
 
+    /* PARA LA SEGUNDA PARTE CON JS */
+    .table-wrapper {
+      width: 100%;
+      font-size: 16px;
+      font-weight: 700;
+      /* padding-right: 50px; */
+      display: flex;
+      /* PONER UN DIV DESPUÉS DEL OTRO. */
+      flex-flow: column;
+    }
+
+    .table--row {
+      /* height: 25px; */
+      padding: 11px 100px 10px 0;
+      display: inline-flex;
+      justify-content: space-evenly;
+    }
+
+    .table--row--element {
+      align-self: center;
+    }
+
     @media screen and (max-width: 946px) {
       body {
         justify-content: unset;
@@ -107,6 +131,9 @@
     }
   </style>
   <div class="all-content-wrapper">
+
+<!-- ------------------- PARTE 1: MAQUETA CON HTML Y CSS -------------------- -->
+
     <div class="top-layout-wrapper">
       
       <h1>Overview</h1>
@@ -133,7 +160,77 @@
       </div>
 
     </div>
+
+<!-- ------------------------- PARTE 2: JAVASCRIPT ------------------------- -->
+  
+
+
+
   </div>
+
+<!-- ----------------------- CÓDIGO PARA AGREGAR JS ------------------------ -->
+
+  <script>
+    document.body.onload = addTable;
+    function addTable() {
+      var row;
+      /* 5 RENGLONES, 3 COLUMNAS - ASÍ SE DECLARA EL ARREGLO.*/
+      var elements = [[]];
+      var tableContainer = document.createElement('div');
+      tableContainer.className = "table-wrapper";
+
+      /* --------------------------------------------- PRIMERA FILA */
+      row = document.createElement('div');
+      row.className = "table--row";
+      // PRIMERA FILA DE OTRO COLOR.
+      // row.style.backgroundColor = "#e8ecfc";
+      row.style.backgroundColor = "#e8f8fc";
+      // ELEMENTOS DE LA PRIMERA FILA.
+      elements[0][0] = document.createElement('div');
+      elements[0][0].className = "table--row--element";
+      elements[0][0].innerHTML = "Name";
+
+      elements[0][1] = document.createElement('div');
+      elements[0][1].className = "table--row--element";
+      elements[0][1].innerHTML = "Balance";
+
+      elements[0][2] = document.createElement('div');
+      elements[0][2].className = "table--row--element";
+      elements[0][2].innerHTML = "Date";
+
+      row.appendChild(elements[0][0]);
+      row.appendChild(elements[0][1]);
+      row.appendChild(elements[0][2]);
+
+      tableContainer.appendChild(row);
+
+      allContent = document.getElementsByClassName("all-content-wrapper");
+      allContent[0].appendChild(tableContainer);
+
+      /* --------------------------------------------- 2 FILA */
+
+
+      /* --------------------------------------------- 2 FILA */
+
+
+      /* --------------------------------------------- 4  FILA */
+
+
+      /* --------------------------------------------- 5 FILA */
+
+
+
+
+    }
+
+    function createRow(currentRow, currentColumn, elementsArray) {
+      
+
+
+      return row;
+    }
+
+  </script>
 
 </body>
 </html>
