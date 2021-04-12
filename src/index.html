@@ -27,6 +27,7 @@
       margin-top: 6px;
       display: flex; 
       justify-content: center;
+      overflow: hidden;
       /* overflow: hidden; display: flex; justify-content: center; */
 
     }
@@ -37,13 +38,14 @@
     */
     .all-content-wrapper {
       background-color: #f8fcfc;
-      width: 936px; height: 665px;
-      min-width: 936px; min-height: 665px;
+      /* width: 936px; height: 665px; */
+      min-width: 905px; min-height: 665px;
     }
 
     /* CONTENEDOR DE LA PARTE SUPERIOR QUE VA MAQUETADA. */
     .top-layout-wrapper {
-      padding: 22px;
+      /* padding: 22px; */
+      padding: 22px 24px 22px 21px;
       font-family: 'Nunito Sans';
     }
 
@@ -62,14 +64,17 @@
     /* CARDS REDONDEADAS QUE DEBERÁN CAMBIAR CON EL HOVER. */
     .card {
       /* Borde redondeado. */
-      box-shadow: 0px 0px 0px 1px #a4a7b8;
-      height: 20px;
-      width: 40px;
+      /* box-shadow: 0px 0px 0px 1px #e0e1eb; */
+      border: 1px solid #e0e1eb;
+      border-radius: 4px;
+      height: 86px;
+      width: 199px;
     }
 
     .card:hover {
-      color: #3751ff;
-      outline-color: currentColor;
+      /* color: #3751ff; */
+      color: #8494fc;
+      border-color: currentColor;
     }
 
     @media screen and (max-width: 946px) {
