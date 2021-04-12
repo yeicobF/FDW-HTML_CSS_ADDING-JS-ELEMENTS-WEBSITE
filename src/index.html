@@ -18,14 +18,23 @@
 
 
 </head>
-<body
-  style="background-color: rgb(51, 51, 51); color: #252733; margin-top: 6px;
-         overflow: hidden; display: flex; justify-content: center;">
-         <!-- margin: 6px 4px 6px 4px; overflow: hidden;"> -->
+<body>
   
   <style>
+    body {
+      background-color: rgb(51, 51, 51); 
+      color: #252733; 
+      margin-top: 6px;
+      display: flex; 
+      justify-content: center;
+      /* overflow: hidden; display: flex; justify-content: center; */
+
+    }
+
     /* UN CONTENEDOR GENERAL PARA QUE LO QUE ESTÉ FUERA DEL TAMAÑO ORIGINAL DE
-        LA RÉPLICA TENGA UN FONDO NEGRO COMO EN EL VISUALIZADOR PDF. */
+        LA RÉPLICA TENGA UN FONDO NEGRO COMO EN EL VISUALIZADOR PDF. Esto más
+        que nada para mantener una refencia de los tamaños del diseño original.
+    */
     .all-content-wrapper {
       background-color: #f8fcfc;
       width: 936px; height: 665px;
@@ -63,6 +72,15 @@
       outline-color: currentColor;
     }
 
+    @media screen and (max-width: 946px) {
+      body {
+        justify-content: unset;
+        width: 939px;
+        margin-left: 4px;
+        margin-right: 4px;
+        margin-bottom: 4px;
+      }
+    }
   </style>
   <div class="all-content-wrapper">
     <div class="top-layout-wrapper">
@@ -80,5 +98,6 @@
 
     </div>
   </div>
+
 </body>
 </html>
