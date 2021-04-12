@@ -56,7 +56,7 @@
 
     /* CONTENEDOR DE LAS CARTAS. */
     .card-container {
-      padding: 39px 0 22px 0;
+      padding: 36px 0 22px 0;
       display: flex;
       justify-content: space-between;
     }
@@ -67,14 +67,33 @@
       /* box-shadow: 0px 0px 0px 1px #e0e1eb; */
       border: 1px solid #e0e1eb;
       border-radius: 4px;
-      height: 86px;
+      height: 83px;
       width: 199px;
+      display: flex;
+      /* CENTRAR HORIZONTALMENTE. */
+      justify-content: center;
+      /* CENTRAR VERTICALMENTE. */
+      align-items: center;
+      /* PONER UN DIV DESPUÉS DEL OTRO. */
+      flex-flow: column;
+      font-weight: 700;
+
     }
 
-    .card:hover {
-      /* color: #3751ff; */
-      color: #8494fc;
-      border-color: currentColor;
+    .card--text {
+      /* margin-top: -11px; */
+      color: #a2a4b6;
+      font-size: 12px;
+    }
+
+    .card--number {
+      font-size: 28px;
+    }
+
+    .card:hover,
+    .card:hover .card--text {
+      color: #3751ff;
+      border-color: #8494fc;
     }
 
     @media screen and (max-width: 946px) {
@@ -94,10 +113,22 @@
 
       <div class="card-container">
 
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
+        <div class="card">
+          <div class="card--text">Unresolved</div>
+          <div class="card--number">60</div>
+        </div>
+        <div class="card">
+          <div class="card--text">Overdue</div>
+          <div class="card--number">16</div>
+        </div>
+        <div class="card">
+          <div class="card--text">Open</div>
+          <div class="card--number">43</div>
+        </div>
+        <div class="card">
+          <div class="card--text">On hold</div>
+          <div class="card--number">64</div>
+        </div>
 
       </div>
 
