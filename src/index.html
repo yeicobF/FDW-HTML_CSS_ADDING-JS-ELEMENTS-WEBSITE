@@ -39,7 +39,7 @@
     .all-content-wrapper {
       background-color: #f8fcfc;
       /* width: 936px; height: 665px; */
-      min-width: 905px; min-height: 665px;
+      min-width: 905px; min-height: 644px;
       font-family: 'Nunito Sans';
 
     }
@@ -96,6 +96,7 @@
     .card:hover .card--text {
       color: #3751ff;
       border-color: #8494fc;
+      cursor: pointer;
     }
 
     /* PARA LA SEGUNDA PARTE CON JS */
@@ -110,14 +111,23 @@
     }
 
     .table--row {
-      /* height: 25px; */
-      padding: 11px 100px 10px 0;
+      height: 49.5px;
+      /* padding: 11px 100px 10px 0; */
       display: inline-flex;
       justify-content: space-evenly;
     }
 
     .table--row--element {
+      /* ALINEAR VERTICALMENTE. */
       align-self: center;
+      /* ALINEAR HORIZONTALMENTE. */
+      text-align: center;
+      width: 135px;
+      padding: 0 40px 0 40px;
+    }
+
+    #top-table-row {
+      height: 43px;
     }
 
     @media screen and (max-width: 946px) {
@@ -171,6 +181,7 @@
 <!-- ----------------------- CÓDIGO PARA AGREGAR JS ------------------------ -->
 
   <script>
+    // CUANDO SE TERMINE DE CARGAR EL BODY SE HARÁ ESTE PROCESO.
     document.body.onload = addTable;
     function addTable() {
       // ARREGLO DE FILAS
@@ -190,15 +201,20 @@
       rowText[0][0] = "Name";
       rowText[0][1] = "Balance";
       rowText[0][2] = "Date";
+      rowText[0][3] = "";
       rowColor = "#e8f8fc";
       
       // CREAR LA FILA CON LOS DATOS.
       rowsArray[0] = createRow(0, rowText, rowColor);
+      // Esta es más alta que las otras.
+      rowsArray[0].id = "top-table-row";
 
       /* --------------------------------------------- 2 FILA */
       rowText[1][0] = "Juan Perez";
       rowText[1][1] = "$10,000";
       rowText[1][2] = month + "/" + day + "/" + year;
+      rowText[1][3] = "";
+
       rowColor = "#ffffff";
 
       // CREAR LA FILA CON LOS DATOS.
@@ -208,6 +224,8 @@
       rowText[2][0] = "Juan Perez";
       rowText[2][1] = "$10,000";
       rowText[2][2] = month + "/" + day + "/" + year;
+      rowText[2][3] = "";
+
       rowColor = "#f0ecec";
 
       rowsArray[2] = createRow(2, rowText, rowColor);
@@ -215,6 +233,8 @@
       rowText[3][0] = "Juan Perez";
       rowText[3][1] = "$10,000";
       rowText[3][2] = month + "/" + day + "/" + year;
+      rowText[3][3] = "";
+
       rowColor = "#ffffff";
 
       rowsArray[3] = createRow(3, rowText, rowColor);
@@ -222,6 +242,8 @@
       rowText[4][0] = "Juan Perez";
       rowText[4][1] = "$10,000";
       rowText[4][2] = month + "/" + day + "/" + year;
+      rowText[4][3] = "";
+
       rowColor = "#f0ecec";
 
       rowsArray[4] = createRow(4, rowText, rowColor);
@@ -241,15 +263,12 @@
       row.style.backgroundColor = rowColor;
 
       // CREAMOS CADA ELEMENTO CON SU TEXTO CORRESPONDIENTE.
-      for (i = 0; i < 3; i++) {
+      for (i = 0; i < textArray[currentRow].length; i++) {
         elements[i] = document.createElement('div');
         elements[i].className = "table--row--element";
         elements[i].innerHTML = textArray[currentRow][i];
+        row.appendChild(elements[i]);
       }
-
-      row.appendChild(elements[0]);
-      row.appendChild(elements[1]);
-      row.appendChild(elements[2]);
 
       return row;
     }
@@ -268,8 +287,10 @@
     // INICIALIZAR EL ARREGLO BIDIMENSIONAL.
     function initialize2DArray(rows, cols) {
       bidimensionalArray = new Array(rows);
+
       for (i = 0; i < rows; i++)
         bidimensionalArray[i] = new Array(cols);
+
       return bidimensionalArray;
     }
 
