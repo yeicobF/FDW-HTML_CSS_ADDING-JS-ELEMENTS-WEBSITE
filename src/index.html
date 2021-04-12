@@ -5,10 +5,78 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MAQUETACIÓN CON HTML, CSS Y JAVASCRIPT</title>
+
+<!-- ------------------------------- FUENTES ------------------------------- -->
+<!--
+  - Nunito Sans
+  https://fonts.google.com/specimen/Nunito+Sans?preview.text=Overview&preview.text_type=custom
+-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+  href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;1,200;1,300;1,400;1,600;1,700&display=swap"
+  rel="stylesheet">
+
+
 </head>
-<body style="background-color: #f8fcfc;">
+<body
+  style="background-color: #f8fcfc; color: #252733; margin: 0 auto 0 auto;
+         width: 918px; height: 643px;">
   
-  <h1 style="color: #252733;">Overview</h1>
+  <style>
+    /* UN CONTENEDOR GENERAL PARA QUE LO QUE ESTÉ FUERA DEL TAMAÑO ORIGINAL DE
+        LA RÉPLICA TENGA UN FONDO NEGRO COMO EN EL VISUALIZADOR PDF. */
+    .all-content-wrapper {
+      background-color: #f8fcfc;
+      width: 918px; height: 643ppx;
+    }
+
+    /* CONTENEDOR DE LA PARTE SUPERIOR QUE VA MAQUETADA. */
+    .top-layout-wrapper {
+      margin: 22px;
+      font-family: 'Nunito Sans';
+    }
+
+    .top-layout-wrapper h1 {
+      margin: 0px;
+      font-size: 16px;
+    }
+
+    /* CONTENEDOR DE LAS CARTAS. */
+    .card-container {
+      padding: 39px 0 22px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* CARDS REDONDEADAS QUE DEBERÁN CAMBIAR CON EL HOVER. */
+    .card {
+      /* Borde redondeado. */
+      box-shadow: 0px 0px 0px 1px #a4a7b8;
+      height: 20px;
+      width: 40px;
+    }
+
+    .card:hover {
+      color: #3751ff;
+      outline-color: currentColor;
+    }
+
+  </style>
+
+  <div class="top-layout-wrapper">
+    
+    <h1>Overview</h1>
+
+    <div class="card-container">
+
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+
+    </div>
+
+  </div>
 
 </body>
 </html>
