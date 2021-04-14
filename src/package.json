@@ -1,0 +1,22 @@
+{
+  "name": "website-html-css-dinamic_elements_js",
+  "version": "1.0.0",
+  "description": "A website which half layout was desgined manually, and half dinamically with JavaScript.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "javascript",
+    "js"
+  ],
+  "author": "yeicob",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "airbnb-base"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "rules": {
+    "linebreak-style": ["off", "windows"],
+    "quotes": ["off", "double"],
+    "no-plusplus": [
+        "error",
+        {
+          "allowForLoopAfterthoughts": true
+        }
+      ],
+    // No se requieren las llaves cuando solo hay un statement dentro del bloque
+    // de if, else, do, while, for
+    "curly": ["error", "multi"], // Pide el statement en la misma línea.
+    
+    // https://eslint.org/docs/rules/nonblock-statement-body-position
+    // Permite que se ponga el statement debajo o a la derecha de la condición
+    // que no requiere braces.
+    "nonblock-statement-body-position": ["error", "any"],
+
+    // Solo pedir una coma al final de un objeto o arreglo cuando se definen en
+    // múltiples líneas.
+    // https://eslint.org/docs/rules/comma-dangle
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    // Que no de problemas cuando se utilice el "console.log" ni niguna
+    // operación con "console".
+    "no-console": "off"
+    // https://eslint.org/docs/rules/curly
+    // Esta pide braces si hay más de un statement dentro.
+    // "curly": ["warn", "multi-or-nest"]
+
+    // Permite operadores unitarios (++, --) en el afterthought
+    // (final expression) del for loop.
+    // "allowForLoopAfterthoughts": true
+  }
+}
