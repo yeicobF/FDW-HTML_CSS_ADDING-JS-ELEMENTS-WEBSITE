@@ -37,7 +37,10 @@
     ],
     // Que no de problemas cuando se utilice el "console.log" ni niguna
     // operación con "console".
-    "no-console": "off"
+    "no-console": "off",
+
+    // Muestra una advertencia cuando se declaran variables y no se utilizan.
+    "no-unused-vars": "warn"
     // https://eslint.org/docs/rules/curly
     // Esta pide braces si hay más de un statement dentro.
     // "curly": ["warn", "multi-or-nest"]
