@@ -1,32 +1,34 @@
+<!-- AQUÍ SE ENCONTRARÁ EL ANTIGUO HTML QUE HABÍA. -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MAQUETACIÓN CON HTML, CSS Y JAVASCRIPT</title>
+  <title>ANTIGUA MAQUETACIÓN CON HTML, CSS Y JAVASCRIPT</title>
 
-<!-- ------------------------------- FUENTES ------------------------------- -->
-<!--
+  <!-- ------------------------------- FUENTES ------------------------------- -->
+  <!--
   - Nunito Sans
   https://fonts.google.com/specimen/Nunito+Sans?preview.text=Overview&preview.text_type=custom
 -->
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-  href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;1,200;1,300;1,400;1,600;1,700&display=swap"
-  rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;1,200;1,300;1,400;1,600;1,700&display=swap"
+    rel="stylesheet">
 
-  <!-- JAVASCRIPT -->
-  <script src="create-second-half-of-page.js"></script>
+
 </head>
+
 <body>
-  
+
   <style>
     body {
-      background-color: rgb(51, 51, 51); 
-      color: #252733; 
+      background-color: rgb(51, 51, 51);
+      color: #252733;
       margin-top: 6px;
-      display: flex; 
+      display: flex;
       justify-content: center;
       /* overflow: hidden; */
       /* overflow: hidden; display: flex; justify-content: center; */
@@ -40,7 +42,8 @@
     .all-content-wrapper {
       background-color: #f8fcfc;
       /* width: 936px; height: 665px; */
-      min-width: 905px; min-height: 644px;
+      min-width: 905px;
+      min-height: 644px;
       font-family: 'Nunito Sans';
 
     }
@@ -145,10 +148,10 @@
   </style>
   <div class="all-content-wrapper">
 
-<!-- ------------------- PARTE 1: MAQUETA CON HTML Y CSS -------------------- -->
+    <!-- ------------------- PARTE 1: MAQUETA CON HTML Y CSS -------------------- -->
 
     <div class="top-layout-wrapper">
-      
+
       <h1>Overview</h1>
 
       <div class="card-container">
@@ -173,26 +176,21 @@
       </div>
     </div>
   </div>
-  
-<!-- ------------------------- PARTE 2: JAVASCRIPT ------------------------- -->
-<!-- ----------------------- CÓDIGO PARA AGREGAR JS ------------------------ -->
 
-  <!-- CUANDO SE TERMINE DE CARGAR EL BODY SE HARÁ ESTE PROCESO. -->
+  <!-- ------------------------- PARTE 2: JAVASCRIPT ------------------------- -->
+  <!-- ----------------------- CÓDIGO PARA AGREGAR JS ------------------------ -->
+
   <script>
-    document.body.onload = addAllJSElements;
-  </script>
-
-  <!-- <script>
     // CUANDO SE TERMINE DE CARGAR EL BODY SE HARÁ ESTE PROCESO.
-    // document.body.onload = addAllJSElements;
+    document.body.onload = addAllJSElements;
 
     function addAllJSElements() {
-        // Agregamos la tabla.
-        addTable();
+      // Agregamos la tabla.
+      addTable();
 
-        // Hay que agregar el total del balance en la esquina inferior derecha.
-        addBalanceTotal();
-      }
+      // Hay que agregar el total del balance en la esquina inferior derecha.
+      addBalanceTotal();
+    }
 
     // AGREGAR LA SUMA DEL BALANCE.
     // Me gustaría hacer mejor este códgio.
@@ -207,10 +205,10 @@
       balanceTotal[0].style.padding = "0 42px 0 18px";
       balanceTotal[0].style.width = "unset";
 
-      
+
       balanceTotal[1] = document.createElement('div');
       balanceTotal[1].className = "table--row--element";
-      
+
       // toLocaleString() 
       // Así el número se separa dependiendo de las oopciones del sistema del
       // usuario que lo ve. Como separado por comas, por ejemplo.
@@ -250,11 +248,11 @@
       // Obtenemos todas las filas de la tabla para solo acceder al segundo elemento,
       //  en donde se encuentran los balances.
       var tableValues = document.getElementsByClassName("table--row");
-      
+
       // console.log(tableValues);
 
-      var balanceValues = new Array(tableValues.length -1);
-      
+      var balanceValues = new Array(tableValues.length - 1);
+
       // Acumulador de los valores del balance.
       var totalSum = 0;
       for (i = 1; i <= balanceValues.length; i++) {
@@ -265,7 +263,7 @@
         totalSum += parseInt(balanceValues[i - 1]);
         // console.log("\n - VALUE TO INT = " + balanceValues[i - 1] + ", SUM = " + totalSum);
       }
-      
+
       return totalSum;
     }
 
@@ -276,11 +274,11 @@
           Se guarda el texto de todas las columnas.*/
       var rowText = initialize2DArray(5, 3);
       var date = new Date();
-      var month = date.getMonth(), day = date.getDay(), year = date.getFullYear();
+      var month = date.getMonth() + 1, day = date.getDate(), year = date.getFullYear();
       // DIV CON TODO EL CONTENIDO.
       var allContent = document.getElementsByClassName("all-content-wrapper");
 
-      
+
 
       /* --------------------------------------------- PRIMERA FILA */
       // PRIMERA FILA DE OTRO COLOR.
@@ -289,7 +287,7 @@
       rowText[0][2] = "Date";
       rowText[0][3] = "";
       rowColor = "#e8f8fc";
-      
+
       // CREAR LA FILA CON LOS DATOS.
       rowsArray[0] = createRow(0, rowText, rowColor);
       // Esta es más alta que las otras.
@@ -298,7 +296,7 @@
       /* --------------------------------------------- 2 FILA */
       rowText[1][0] = "Juan Perez";
       rowText[1][1] = "$10,000";
-      rowText[4][2] = `${month}/${day}/${year}`;
+      rowText[1][2] = month + "/" + day + "/" + year;
       rowText[1][3] = "";
 
       rowColor = "#ffffff";
@@ -381,7 +379,8 @@
       return bidimensionalArray;
     }
 
-  </script> -->
+  </script>
 
 </body>
+
 </html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAQUETACIÓN CON HTML, CSS Y JAVASCRIPT</title>
+
+<!-- ------------------------------- FUENTES ------------------------------- -->
+<!--
+  - Nunito Sans
+  https://fonts.google.com/specimen/Nunito+Sans?preview.text=Overview&preview.text_type=custom
+-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+  href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;1,200;1,300;1,400;1,600;1,700&display=swap"
+  rel="stylesheet">
+
+  <!-- JAVASCRIPT -->
+  <script src="../js/create-second-half-of-page.js"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+  
+  <div class="all-content-wrapper">
+
+<!-- ------------------ PARTE 1: MAQUETA CON HTML Y CSS -------------------- -->
+
+    <div class="top-layout-wrapper">
+      
+      <h1>Overview</h1>
+
+      <div class="card-container">
+
+        <div class="card">
+          <div class="card--text">Unresolved</div>
+          <div class="card--number">60</div>
+        </div>
+        <div class="card">
+          <div class="card--text">Overdue</div>
+          <div class="card--number">16</div>
+        </div>
+        <div class="card">
+          <div class="card--text">Open</div>
+          <div class="card--number">43</div>
+        </div>
+        <div class="card">
+          <div class="card--text">On hold</div>
+          <div class="card--number">64</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  
+<!-- ------------------------- PARTE 2: JAVASCRIPT ------------------------- -->
+<!-- ----------------------- CÓDIGO PARA AGREGAR JS ------------------------ -->
+
+  <!-- CUANDO SE TERMINE DE CARGAR EL BODY SE HARÁ ESTE PROCESO. -->
+<!-- ---------------------- ES CÓDIGO DEL ARCHIVO JS ----------------------- -->
+  <script>
+    document.body.onload = addAllJSElements;
+  </script>
+
+</body>
+</html>

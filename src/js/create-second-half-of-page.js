@@ -34,47 +34,67 @@ function getBalanceValues() {
   return totalSum;
 }
 
+// CREAR LA ÚLTIMA FILA EN DONDE VIENE EL TOTAL Y LA SUMA DE LOS BALANCES.
+// Son 2 columnas con varios datos e info. El método es para evitar ser
+// redundante.
+// Variable con un nombre "más simple" y la función con un nombre más complejo.
+const createTotalBalanceRow = function createNewBalanceColumns(rowText) {
+  // Las especificaciones de la última fila y sus columnas.
+  const columnsInfo = new Array(2);
+
+  for (let i = 0; i < rowText.length; i++) {
+    // Esto aplica para las dos columnas.
+    columnsInfo[i] = document.createElement('div');
+    columnsInfo[i].className = "table--row--element";
+    columnsInfo[i].style.padding = "0 42px 0 18px";
+    columnsInfo[i].style.width = "unset";
+    // El texto que dirán las columnas.
+    columnsInfo[i].innerHTML = rowText[i];
+    // console.log(`\n-> i = ${i}: ${rowText[i]},
+    //                       columnsInfo[${i}]: ${columnsInfo[i].innerHTML}\n`);
+  }
+
+  return columnsInfo;
+};
+
 // AGREGAR LA SUMA DEL BALANCE.
 // Me gustaría hacer mejor este códgio.
 function addBalanceTotal() {
   // DIV CON TODO EL CONTENIDO.
   const allContent = document.getElementsByClassName("all-content-wrapper");
+  const balanceRowText = [
+    "Total",
+    // toLocaleString()
+    // Así el número se separa dependiendo de las oopciones del sistema del
+    // usuario que lo ve. Como separado por comas, por ejemplo.
+    // toLocaleString("en-US") <- Así se ponen comas en lugar de puntos.
+    // FUENTE: https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+    `$${getBalanceValues().toLocaleString("en-US")}`,
+  ];
 
-  const balanceTotal = new Array(2);
-  balanceTotal[0] = document.createElement('div');
-  balanceTotal[0].className = "table--row--element";
-  balanceTotal[0].innerHTML = "Total";
-  balanceTotal[0].style.padding = "0 42px 0 18px";
-  balanceTotal[0].style.width = "unset";
+  // Fila con las 2 columnas que indican el balance total. La obtenemos de la
+  // función en la que mandamos el texto que habrá en cada una de las 2 columnas
+  // de dicha fila.
+  // Es un arreglo con las dos columnas.
+  const totalBalanceRow = createTotalBalanceRow(balanceRowText);
+  // console.log(`\n- Tamaño de arreglo: ${totalBalanceRow.length}`);
 
-  balanceTotal[1] = document.createElement('div');
-  balanceTotal[1].className = "table--row--element";
-
-  // toLocaleString()
-  // Así el número se separa dependiendo de las oopciones del sistema del
-  // usuario que lo ve. Como separado por comas, por ejemplo.
-  // toLocaleString("en-US") <- Así se ponen comas en lugar de puntos.
-  // FUENTE: https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
-  balanceTotal[1].innerHTML = `$${getBalanceValues().toLocaleString("en-US")}`;
-  balanceTotal[1].style.padding = "0 42px 0 18px";
-  balanceTotal[1].style.width = "unset";
-
-  // METER EN UN DIV ESOS ELEMENTOS PARA ACOMODARLOS.
-  const balanceWrapper = document.createElement('div');
-  // balanceWrapper.className = "table--row";
-  balanceWrapper.style.marginTop = "24px";
-  balanceWrapper.style.marginLeft = "auto";
-  balanceWrapper.style.fontWeight = "800";
-  balanceWrapper.style.width = "100%";
-  balanceWrapper.style.display = "flex";
-  balanceWrapper.style.placeContent = "flex-end";
+  // METER EN UN DIV CONTENEDOR LAS COLUMNAS DEL "Total" y la suma del balance.
+  const totalBalanceRowWrapper = document.createElement('div');
+  // totalBalanceRowWrapper.className = "table--row";
+  totalBalanceRowWrapper.style.marginTop = "24px";
+  totalBalanceRowWrapper.style.marginLeft = "auto";
+  totalBalanceRowWrapper.style.fontWeight = "800";
+  totalBalanceRowWrapper.style.width = "100%";
+  totalBalanceRowWrapper.style.display = "flex";
+  totalBalanceRowWrapper.style.placeContent = "flex-end";
 
   // Agregamos el texto y el número al total.
-  balanceWrapper.appendChild(balanceTotal[0]);
-  balanceWrapper.appendChild(balanceTotal[1]);
+  totalBalanceRowWrapper.appendChild(totalBalanceRow[0]);
+  totalBalanceRowWrapper.appendChild(totalBalanceRow[1]);
 
   // Agregar el wrapper al final de todo el contenido.
-  allContent[0].appendChild(balanceWrapper);
+  allContent[0].appendChild(totalBalanceRowWrapper);
 }
 
 // AGREGAR TODAS LAS FILAS A LA TABLA Y LUEGO LA TABLA AL HTML.
@@ -202,6 +222,8 @@ function addTable() {
   allContent[0].appendChild(appendRowsToTable(rowsArray));
 }
 
+// FUNCIÓN QUE AGREGARÁ LA TABLA UNA VEZ CREADA
+// Y AGREGA LA FILA DEL BALANCE TOTAL.
 function addAllJSElements() {
   // Agregamos la tabla.
   addTable();
