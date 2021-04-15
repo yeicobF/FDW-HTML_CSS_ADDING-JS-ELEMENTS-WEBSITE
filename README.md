@@ -16,13 +16,17 @@
 
 ## OBJECTIVE LAYOUT
 
-    ![Objective web layout](layout-screenshots/objective-web-layout.png)
-    ![Objective web layout explained graphically](layout-screenshots/objective-web-layout-explained.png)
+<!-- LOS SIGNOS DE AMIRACIÓN SON PARA QUE SE MUESTREN LAS IMÁGENES, DE OTRA
+     FORMA, SE PONDRÍAN COMO ENLACES AL CONRENIDO ESPECÍFICADO. -->
+![Objective web layout](layout-screenshots/objective-web-layout.png)
+![Objective web layout explained graphically](layout-screenshots/objective-web-layout-explained.png)
 
 ## LAYOUT I MADE
     
-    ![Final web layout I made](layout-screenshots/final-own-result.png)
-    ![Final web layout I made with hover on a card](layout-screenshots/final-own-result-hover.png)
+![Final web layout I made](layout-screenshots/final-own-result.png)
+<!-- LA IMAGEN DEBE DE IR AQUÍ, SI NO, NO SE VA A MOSTRAR. También debe llevar
+     el signo de admiración para que se muestre. -->
+![Final web layout I made with hover on a card](layout-screenshots/final-own-result-hover.png)
 
 # PARTS
 
