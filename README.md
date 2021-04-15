@@ -12,6 +12,18 @@
 
     - Desktop - 3.pdf <- WEBSITE LAYOUT WITH GRAPHIC INSTRUCTIONS.
 
+# LAYOUT
+
+## OBJECTIVE LAYOUT
+
+    ![Objective web layout](layout-screenshots/objective-web-layout.png)
+    ![Objective web layout explained graphically](layout-screenshots/objective-web-layout-explained.png)
+
+## LAYOUT I MADE
+    
+    ![Final web layout I made](layout-screenshots/final-own-result.png)
+    ![Final web layout I made with hover on a card](layout-screenshots/final-own-result-hover.png)
+
 # PARTS
 
 ## 1.- PRIMERA PARTE: MAQUETACIÓN
